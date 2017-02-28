@@ -1,0 +1,21 @@
+[Unit]
+Description=APRS-control Service
+# Description=Place this file in /lib/systemd/system
+# Description=Rikard Lindstrom 2017 
+
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=3
+StandardOutput=null
+WorkingDirectory=/opt/aprs-control
+ExecStart=/opt/aprs-control/aprs-control.py
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+
+[Install]
+WantedBy=network-online.target
+
+
+
